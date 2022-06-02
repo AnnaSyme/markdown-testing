@@ -29,6 +29,11 @@ Please note that:
 * Newer module versions are named in the format <code>Stacks<strong>2</strong>:module_name</code>
 * To see all modules in Stacks2, for example, type <strong>Stacks2</strong> in the tool panel.
 
+<p align="center">
+    <img src="tool-panel.png" alt="tool panel" width="400"/>
+</p>
+
+
 ### Recommended prerequisites and suggestions
 
 * Before running large analyses with Stacks in Galaxy, we recommend becoming familiar with the Galaxy interface, particularly via the introductory tutorials in the link above. 
