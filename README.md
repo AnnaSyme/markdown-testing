@@ -300,14 +300,7 @@ After importing the workflow, go to the top Galaxy tab "Workflows".
 
 **Image of the workflow:**
 
-
-
-<p id="gdcalert1" ><span style="color: red; font-weight: bold">>>>>>  wf-image-qc.png </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert2">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image1.png "image_tooltip")
-
-
+![alt_text](wf-image-qc.png)
 
 ### Steps and outputs
 
