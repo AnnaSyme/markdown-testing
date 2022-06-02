@@ -133,6 +133,11 @@ To delete a line in a population map, for example to exclude a particular sample
 
 **Image showing an overview of the Stacks workflows:**
 
+<p align="center">
+    <img src="wfs.png" alt="workflows" width="400"/>
+</p>
+
+
 ### Links to workflows
 
 
