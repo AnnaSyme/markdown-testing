@@ -61,7 +61,6 @@ Please note that:
 
 ### Group the reads into a single collection
 
-
 * In your Galaxy history, find the small tick icon at the top right. Click on this. 
 * Then select all of the fastq read files
 * Click "For all selected ...." and choose "Build Dataset List". This list can now be used as input into the Galaxy workflows described later in this guide.
@@ -82,50 +81,47 @@ Please note that:
 
 ### Create or amend a population map
 
+For more information about the population map format, see the Stacks manual. 
 
-* For more information about the population map format, see the Stacks manual. 
-* To create a population map in Galaxy:
-    * Go to Upload Data
-    * Click "Paste/Fetch" data
-    * Paste in the population map
-    * For File Type select tabular
-    * In the cog wheel under Settings, tick "convert spaces to tabs" 
-    * Click Start, then close
-* To change a population map in Galaxy:
-    * Click on the eye icon to view an existing population map
-    * Copy the text
-    * Paste it in to create a new file, as described above. 
-    * Modify it as required, before saving. 
-* You can upload a population map directly into Galaxy. 
-    * If this file generates an error when running Stacks, you can reformat it by copying the contents and pasting into a new file (as described above), particularly to convert the spaces to tabs. 
-    * For more troubleshooting, you can check if a pop map is formatted correctly (if comfortable with the commandline):
-    * as explained more here: ​​[https://groups.google.com/g/stacks-users/c/6-F5mETPv-A?pli=1](https://groups.google.com/g/stacks-users/c/6-F5mETPv-A?pli=1)
-    * Download popmap to desktop
-    * in terminal type `head [popmap filename] | od -c`
-    * check if any odd characters e.g. extra invisible chars or newlines at start
-    * to edit: `nano [popmap filename]`; edit, save, reupload to Galaxy 
-* To delete a line in a population map, for example to exclude a particular sample for the analysis, 
-    * Search for the tool "replace" in the tool panel
-    * Select the tool called "Replace text in an entire line"
-    * The input file is the current population map
-    * For "Find pattern", enter in the sample name that you want to delete, followed by a dot and an asterisk, e.g. SampleXYZ.*
-    * For "Replace with" leave blank
+To create a population map in Galaxy:
+* Go to Upload Data
+* Click "Paste/Fetch" data
+* Paste in the population map
+* For File Type select tabular
+* In the cog wheel under Settings, tick "convert spaces to tabs" 
+* Click Start, then close
+    
+To change a population map in Galaxy:
+* Click on the eye icon to view an existing population map
+* Copy the text
+* Paste it in to create a new file, as described above. 
+* Modify it as required, before saving. 
+    
+You can upload a population map directly into Galaxy. 
+* If this file generates an error when running Stacks, you can reformat it by copying the contents and pasting into a new file (as described above), particularly to convert the spaces to tabs. 
 
+For more troubleshooting, you can check if a pop map is formatted correctly (if comfortable with the commandline):
+as explained more here: ​​[https://groups.google.com/g/stacks-users/c/6-F5mETPv-A?pli=1](https://groups.google.com/g/stacks-users/c/6-F5mETPv-A?pli=1)
+* Download popmap to desktop
+* in terminal type `head [popmap filename] | od -c`
+* check if any odd characters e.g. extra invisible chars or newlines at start
+* to edit: `nano [popmap filename]`; edit, save, reupload to Galaxy 
+    
+To delete a line in a population map, for example to exclude a particular sample for the analysis, 
+* Search for the tool "replace" in the tool panel
+* Select the tool called "Replace text in an entire line"
+* The input file is the current population map
+* For "Find pattern", enter in the sample name that you want to delete, followed by a dot and an asterisk, e.g. SampleXYZ.*
+* For "Replace with" leave blank
 
 ## Galaxy workflows
 
-
 ### What is a Galaxy workflow
-
-
 
 * A Galaxy workflow is a set of tools and settings, that can take in certain inputs and produce certain outputs. 
 * For more about this, see [Creating, Editing and Importing Galaxy Workflows](https://training.galaxyproject.org/training-material/topics/galaxy-interface/tutorials/workflow-editor/tutorial.html)
 
-
-
 **Image showing an overview of the Stacks workflows:**
-
 
 ### Links to workflows
 
@@ -207,6 +203,7 @@ Please note that:
 
 
 * If you import a workflow from the shared Galaxy workflows, you can keep track of any changes (or make your own). This is useful if you need to keep a record of the particular version of a workflow that you used in an analysis. 
+
 * A set of workflows has also been uploaded to workflow hub (see links in table above). These have version numbers. Any changes to these workflows will result in new version numbers assigned. 
 
 ### To import a workflow
@@ -266,8 +263,6 @@ The workflow can be modified to suit your own parameters.
 
 The workflow steps are:
 
-
-
 * Run FastQC to get statistics on the raw reads, send to MultiQC to create a nice output. This is tagged as "Report 1" in the Galaxy history. 
 * Run Cutadapt on the reads to cut adapters - enter two files with adapter sequence at the workflow option for "Choose file containing 3' adapters". The default settings are on except that the "Maximum error rate" for the adapters is set to 0.2 instead of 0.1. Send output statistics to MultiQC, this is "Report 2" in the Galaxy history. Note that you may have different requirements here in terms of how many adapter sequences you want to enter. We recommend copying the workflow and modifying as needed. 
 * Send these reads to fastp for additional filtering or trimming. Default settings are on but can be modified as needed. Send output statistics to MultiQC, this is "Report 3" in the Galaxy history. 
@@ -295,7 +290,6 @@ BWA MEM 2:
 
 Samtools stats before filtering:
 
-
 * These bam files are sent to Samtools stats to get statistics; these are then sent to MultiQC to provide a nice output. This is tagged as "bam stats before filtering" in the Galaxy history. 
 * The "General Statistics" show how many reads were mapped - if there is a low mapping rate, it may be worth re-checking or repeating QC on the raw reads, or considering a different reference genome, or using a de novo approach.
 * To see if many reads have been soft-clipped by Bwa mem (which may affect how well gstacks can work), look at the "Alignment Metrics" section, and the row with "Mapped bases (Cigar)". Hover over the dots to see sample names especially towards the left of the row - these have the least mapped reads.
@@ -315,7 +309,6 @@ gstacks:
 * Catalog of loci in fasta format
 * Variant calls in VCF format
 * For more detail see the "gstacks output" section 
-
 * Note: some bam files cause errors here with gstacks. For example, the log file may say "Error, all records discarded with file SampleXYZ.FASTQ.bam, Aborted".
 * If this occurs, check the bam stats (as described above). Some of the options are to re-do QC on the raw reads, change settings for mapping reads in BWA MEM, and/or delete this sample/s from the population map and proceed to gstacks. 
 * The sample can still remain in the list of bam files but gstacks will only consider what is listed in the pop map. 
@@ -330,21 +323,14 @@ populations:
 * Summary statistics
 * For more detail see the "populations outputs" section 
 
-
-
 ### Option: Run only bwa mem
-
-
 
 * This workflow takes in  demultiplexed reads in fastq format (in a collection) and a reference genome in fasta format. 
 * The outputs are a set of filtered bam files, ready for the next part of the stacks workflow (e.g. gstacks), and statistics on the bam files. 
 
-
 ### Option: Run only gstacks + populations
 
-
 * This workflow takes in bam files and a population map and produces output from gstacks and populations, as described above. 
-
 
 ## De novo workflow
 
@@ -382,15 +368,11 @@ cstacks:
 
 sstacks:
 
-
-
 * sstacks will compare each sample to the loci in the catalog. 
 * The outputs are in a collection called something like `Stacks2: sstacks  on data 3, data 76, and others Matches to the catalog.`Click on this to see the files:
 * There is one file for each sample, named e.g. `sample_CAAC.matches`, in tsv format. 
 
 tsv2bam:
-
-
 
 * Conversion to BAM format
 * Reads from each sample are now aligned to each locus, and the tsv2bam tool will convert this into a bam file for each sample. 
@@ -403,7 +385,6 @@ gstacks:
 * Variant calls in VCF format
 * For more detail see the "gstacks output" section
 
-
 populations:
 
 * Locus consensus sequences in fasta format
@@ -411,7 +392,6 @@ populations:
 * Haplotypes, in VCF format
 * Summary statistics
 * For more detail see the "populations output" section
-
 
 ### Option: run only ustacks
 
@@ -435,9 +415,7 @@ To combine multiple outputs from ustacks, providing these have been given approp
 
 * This workflow takes in ustacks output, and runs cstacks, sstacks, gstacks, and populations. 
 
-
 ## Overall output: SNPs and statistics
-
 
 ### Gstacks output
 
@@ -451,43 +429,38 @@ After getting BAM files, gstacks runs to create two files in collection called s
 
 consensus sequences of each locus
 
-* Please see **section 6.6.7 RAD loci FASTA output **in [https://catchenlab.life.illinois.edu/stacks/manual/#pop_fasta](https://catchenlab.life.illinois.edu/stacks/manual/#pop_fasta) for a full description. 
+* Please see **section 6.6.7 RAD loci FASTA output** in [https://catchenlab.life.illinois.edu/stacks/manual/#pop_fasta](https://catchenlab.life.illinois.edu/stacks/manual/#pop_fasta) for a full description. 
 * e.g. Per-locus consensus sequence: `Stacks2: populations on data 3, data 43, and data 42 per-locus consensus sequences`
 
 variant calls for each locus 
 
-* Please see **section 7.2.1 populations.snps.vcf - Default **in [https://catchenlab.life.illinois.edu/stacks/manual/#coords](https://catchenlab.life.illinois.edu/stacks/manual/#coords) for a full description. 
+* Please see **section 7.2.1 populations.snps.vcf** in [https://catchenlab.life.illinois.edu/stacks/manual/#coords](https://catchenlab.life.illinois.edu/stacks/manual/#coords) for a full description. 
 *  Each row is a snp call. The information per sample is over to the right. 
 * e.g. `Stacks2: populations on data 3, data 43, and data 42 SNPs in VCF format`
 
 haplotypes in VCF format
 
-Please see **section 7.3 RAD haplotypes **in [https://catchenlab.life.illinois.edu/stacks/manual/#coords](https://catchenlab.life.illinois.edu/stacks/manual/#coords) for a full description. 
+Please see **section 7.3 RAD haplotypes** in [https://catchenlab.life.illinois.edu/stacks/manual/#coords](https://catchenlab.life.illinois.edu/stacks/manual/#coords) for a full description. 
 
 * These are the haplotypes per locus, phased into groups of snps. 
 * e.g.` Stacks2: populations on data 3, data 43, and data 42 Haplotypes in VCF format`
 
 summary statistics for the populations
 
-
 * Many summary statistics are produced, and the outputs files are named clearly. 
-* Please see **section 6.6 populations** and** section 7.1.1 populations.sumstats.tsv** in [https://catchenlab.life.illinois.edu/stacks/manual/#pfiles](https://catchenlab.life.illinois.edu/stacks/manual/#pfiles) for a full description. 
+* Please see **section 6.6 populations** and **section 7.1.1 populations.sumstats.tsv** in [https://catchenlab.life.illinois.edu/stacks/manual/#pfiles](https://catchenlab.life.illinois.edu/stacks/manual/#pfiles) for a full description. 
 * e.g. the file with a summary of summary statistics for each population is called something like `Stacks2: populations  on data 3, data 43, and data 42 Summary of Population-level summary statistics`
 
-
 ### Troubleshooting and converting outputs
-
 
 * Columns in output files may not correspond exactly to those described in the Stacks manual [http://catchenlab.life.illinois.edu/stacks/manual/#files](http://catchenlab.life.illinois.edu/stacks/manual/#files). There is some description in the tool interface (see below the tool parameters) for what the output format is, particularly for the populations module. Please contact the Galaxy team if something is unclear. 
 * In older versions of Stacks, a summary.html is available but may not display. Download and open to view. 
 
 Convert to Migrate format
 
-
 * This is not available as an option in the current version of Stacks in Galaxy, but there is a script to convert if needed:  (not tested) [https://github.com/paulmaier/fasta2genotype](https://github.com/paulmaier/fasta2genotype), discussed here [https://groups.google.com/g/migrate-support/c/zWonJshYM_4?pli=1](https://groups.google.com/g/migrate-support/c/zWonJshYM_4?pli=1)
 
 Convert the VCF output and use the R vcfR package
-
 
 * R script, see Additional file 2 in Wright, B., Farquharson, K.A., McLennan, E.A. et al. From reference genomes to population genomics: comparing three reference-aligned reduced-representation sequencing pipelines in two wildlife species. BMC Genomics 20, 453 (2019). [https://doi.org/10.1186/s12864-019-5806-y](https://doi.org/10.1186/s12864-019-5806-y)
 
@@ -504,8 +477,6 @@ Convert the VCF output and use the R vcfR package
 
 **What if I get an error message in Galaxy?**
 
-
-
 * The error message from a tool failing may give you enough information to troubleshoot the issue (e.g., was the input file in the correct format, etc.). If not, you can report the tool error to [help@genome.edu.au](mailto:help@genome.edu.au)
 
 **I don't know if my raw reads have been demultiplexed or if adapters have been trimmed?**
@@ -518,67 +489,45 @@ Convert the VCF output and use the R vcfR package
 
 **What if not many reads map well to the reference genome?**
 
-
-
 * Statistics from the reference-guided workflow show how many reads were mapped - if there is a low mapping rate, it may be worth re-checking or repeating QC on the raw reads, or considering a different reference genome, or using a de novo approach.
 
 **How to know what the best parameters are for all the tools?**
-
-
 
 * The best way to guage this is to read the Stacks manual, and check that the parameters make sense to you for your data and your research questions. The tools in the workflows have been set with certain parameters (usually the default settings), but these can be changed. 
 
 **What if I don't have a closely-related reference genome?**
 
-
-
 * Consider the de novo approach instead.
 
 **Where can I find out more about interpreting the outputs?**
-
-
 
 * The Stacks manual, and the Stacks users group [https://groups.google.com/g/stacks-users](https://groups.google.com/g/stacks-users)
 
 **A tool seems to be taking a really long time?**
 
-
-
 * Most of these tools should be fairly quick to run; the longer-running tools are bwa-mem, and ustacks. Some jobs will be queued before running in Galaxy depending on load and space. If in doubt, email [help@genome.edu.au](mailto:help@genome.edu.au). 
 
 **I think there is an error in these workflows/settings**
-
-
 
 * This is possible! These have been set up generally with the default settings. If something looks incorrect please contact [anna.syme@unimelb.edu.au](mailto:anna.syme@unimelb.edu.au)
 
 **Can I change settings in the workflows?**
 
-
-
 * Yes. Some settings can be changed each time you run a workflow. If this is not possible, you can import the workflow and modify it directly on the workflow canvas. 
 
 **Can I add in different tools into the workflows?**
-
-
 
 * Yes. Import the workflow, and edit it to add in additional tools. 
 
 **What if I break Galaxy?**
 
-
-
 * This is unlikely. If you have particularly large jobs (e.g. > 1000 samples), contact the Galaxy Australia team before running workflows, to check there will be enough room. You can also request additional storage. 
 
 **What if I lose my data?**
 
-
-
 * Galaxy is not designed to be for long-term data storage. After you have run your analyses we recommend downloading your data. See [https://training.galaxyproject.org/training-material/topics/galaxy-interface/tutorials/download-delete-data/tutorial.html](https://training.galaxyproject.org/training-material/topics/galaxy-interface/tutorials/download-delete-data/tutorial.html)
 
 **Where can I go for help?**
-
-
 
 * Stacks users group: [https://groups.google.com/g/stacks-users](https://groups.google.com/g/stacks-users)
 * For tool issues in Galaxy, please email [help@genome.edu.au](mailto:help@genome.edu.au)
