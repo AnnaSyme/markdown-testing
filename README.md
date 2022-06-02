@@ -13,19 +13,15 @@ This How-to-Guide will describe the steps required to run the Stacks workflows o
 * For introductory tutorials see [Introduction to Galaxy Analyses](https://training.galaxyproject.org/training-material/topics/introduction/)
 * For help see [Galaxy Community Help](https://help.galaxyproject.org/) or email help@genome.edu.au
 
-
 ### What is RAD-seq?
 
 * For an introduction see these Galaxy tutorials for [RAD-Seq Reference-based data analysis](https://training.galaxyproject.org/training-material/topics/ecology/tutorials/ref-based-rad-seq/tutorial.html) & [RAD-Seq de-novo data analysis](https://training.galaxyproject.org/training-material/topics/ecology/tutorials/de-novo-rad-seq/tutorial.html)
-
 
 ### What is Stacks?
 
 Stacks is used to analyse RADseq data. 
 
-
-
-* For detail, see the manual:  [Stacks manual](http://catchenlab.life.illinois.edu/stacks/manual/#files)** **
+* For detail, see the manual:  [Stacks manual](http://catchenlab.life.illinois.edu/stacks/manual/#files)
 * In Galaxy, the available Stacks modules are installed separately (e.g. ustacks, gstacks)
 * There are also two modules ([ref_map](https://usegalaxy.org.au/root?tool_id=toolshed.g2.bx.psu.edu/repos/iuc/stacks2_refmap/stacks2_refmap/), [denovo_map](https://usegalaxy.org.au/root?tool_id=toolshed.g2.bx.psu.edu/repos/iuc/stacks2_denovomap/stacks2_denovomap/)) that run certain sets of other modules; these are described more in the Stacks manual. 
 
