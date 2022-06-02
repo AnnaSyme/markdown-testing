@@ -1,5 +1,3 @@
-# markdown-testing
-
 ## **Stacks workflows in [Galaxy Australia](https://usegalaxy.org.au/) using RADseq**
 
 ## Introduction & context
@@ -300,7 +298,8 @@ After importing the workflow, go to the top Galaxy tab "Workflows".
 
 **Image of the workflow:**
 
-![alt_text](wf-image-qc.png)
+![denovo workflow](wf-image-qc.png)
+
 
 ### Steps and outputs
 
