@@ -371,7 +371,7 @@ ustacks:
 * for each sample, assembled loci (tsv format), named e.g. `sample_CAAC.tags`
 * for each sample, model calls from each locus (tsv format), named e.g. `sample_CAAC.snps`
 * for each sample, haplotypes/alleles recorded from each locus (tsv format), named e.g. `sample_CAAC.alleles`
-* Please see **sections 6.1 to 6.4 **in [https://catchenlab.life.illinois.edu/stacks/manual/#ufiles](https://catchenlab.life.illinois.edu/stacks/manual/#ufiles) for a full description. 
+* Please see **sections 6.1 to 6.4** in [https://catchenlab.life.illinois.edu/stacks/manual/#ufiles](https://catchenlab.life.illinois.edu/stacks/manual/#ufiles) for a full description. 
 
 cstacks:
 
