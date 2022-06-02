@@ -25,16 +25,11 @@ Stacks is used to analyse RADseq data.
 
 Please note that:
 
-
-
 * Older module versions are named in the format `Stacks:module_name`
 * Newer module versions are named in the format <code>Stacks<strong>2</strong>:module_name</code>
 * To see all modules in Stacks2, for example, type <strong>Stacks2</strong> in the tool panel.
 
-
 ### Recommended prerequisites and suggestions
-
-
 
 * Before running large analyses with Stacks in Galaxy, we recommend becoming familiar with the Galaxy interface, particularly via the introductory tutorials in the link above. 
 * We also highly recommend reading the manual for the Stacks tools, and trying the Galaxy RAD-seq tutorials (links above). 
@@ -43,59 +38,41 @@ Please note that:
 * If you are unsure about outputs from Stacks a useful place for questions is [https://groups.google.com/g/stacks-users](https://groups.google.com/g/stacks-users)
 * For tool issues in Galaxy, please email [help@genome.edu.au](mailto:help@genome.edu.au)
 
-
 ## Galaxy setup
 
-
 ### Log in to Galaxy
-
-
 
 * To register for Galaxy Australia, visit the [login page](https://usegalaxy.org.au/login).
 * Click the `Register here` link
 * Complete the registration wizard and click `Create`.
 * Login to your account.
 
-
 ### Get data: Import sequence reads in fastq format. 
-
-
 
 * To import BPA data, see [https://australianbiocommons.github.io/how-to-guides/galaxy_australia/upload_data](https://australianbiocommons.github.io/how-to-guides/galaxy_australia/upload_data)
 * The files you need are ddRAD fastq.gz
 * To import test data, see the information in the tutorial [RAD-Seq Reference-based data analysis](https://training.galaxyproject.org/training-material/topics/ecology/tutorials/ref-based-rad-seq/tutorial.html)
 
-
 ### Demultiplex the reads if needed
-
-
 
 * If the reads need demultiplexing, run the `process_radtags` tool: search in the tool panel for 'stacks2 process radtags'
 * Each read will have the format: 4bp barcode + ~4bp enzyme cut site + rest of the read
 * You will need to know the enzymes used, and a barcodes file in text format. This has a single barcode on each line, e.g. AACC. 
 
-
 ### Group the reads into a single collection
-
 
 
 * In your Galaxy history, find the small tick icon at the top right. Click on this. 
 * Then select all of the fastq read files
 * Click "For all selected ...." and choose "Build Dataset List". This list can now be used as input into the Galaxy workflows described later in this guide.
 
-
 ### Reads QC, optional
-
-
 
 * For more information about performing QC, see the Galaxy tutorial [Quality Control](https://training.galaxyproject.org/training-material/topics/sequence-analysis/tutorials/quality-control/tutorial.html) 
 * A recommended tool for QC in Galaxy is fastp (search in tool panel). It will automatically search for adapters but you can also add in the adapter sequence if you know it.  
 * A workflow with some potentially relevant QC steps is listed and described below. 
 
-
 ### Import a reference genome if using the reference-guided workflow
-
-
 
 * If you are using the reference-guided workflow you will need to import a reference genome. This can be from the same species as your samples, or possibly a closely-related species. 
 * This should be in fasta format. 
@@ -103,9 +80,7 @@ Please note that:
 * (The tool in Galaxy to directly download a particular accession is failing and is under investigation.)
 * If there are multiple files (e.g. one fasta file per chromosome), it would be best to concatenate these into a single fasta file. This can be done in Galaxy; search for the tool "Concatenate datasets tail-to-head (cat)".
 
-
 ### Create or amend a population map
-
 
 
 * For more information about the population map format, see the Stacks manual. 
@@ -231,15 +206,10 @@ Please note that:
 </table>
 
 
-
-
 * If you import a workflow from the shared Galaxy workflows, you can keep track of any changes (or make your own). This is useful if you need to keep a record of the particular version of a workflow that you used in an analysis. 
 * A set of workflows has also been uploaded to workflow hub (see links in table above). These have version numbers. Any changes to these workflows will result in new version numbers assigned. 
 
-
 ### To import a workflow
-
-
 
 * Click on the link to the workflow, and then the "import workflow" button at the top right
 * Or, in the top Galaxy tab, go to "Shared Data", Click on "Workflows"
@@ -247,8 +217,6 @@ Please note that:
 
 
 ### How to see the workflow layout and default settings
-
-
 
 * After importing the workflow, go to the top Galaxy tab "Workflows".
 * This brings up a list of your workflows. 
@@ -258,10 +226,7 @@ Please note that:
 * Click each tool box, and the right hand panel will show the default settings.
 * You can drag the inputs and tools around to see things better.  
 
-
 ### To run a workflow
-
-
 
 * Create a new Galaxy history with the files needed.
 * Go to the top Galaxy tab "Workflows".
@@ -277,21 +242,15 @@ Please note that:
 
 After importing the workflow, go to the top Galaxy tab "Workflows".
 
-
-
 * This brings up a list of your workflows. 
 * Click on the drop-down arrow next to a workflow. 
 * Click "copy" 
 * Rename the copy. 
 * Open to edit, make changes, and save. 
 
-
 ## QC workflow
 
-
 ### Inputs
-
-
 
 * demultiplexed reads in fastq format, in a collection
 * two adapter sequences in fasta format, for input into cutadapt
@@ -314,13 +273,9 @@ The workflow steps are:
 * Send these reads to fastp for additional filtering or trimming. Default settings are on but can be modified as needed. Send output statistics to MultiQC, this is "Report 3" in the Galaxy history. 
 * The filtered and trimmed reads are then ready for the stacks workflows. 
 
-
 ## Reference-guided workflow
 
-
 ### Inputs
-
-
 
 * demultiplexed reads in fastq format, may be output from the QC workflow. Files are in a collection. 
 * population map in text format
@@ -328,20 +283,11 @@ The workflow steps are:
 
 **Image of the workflow:**
 
-
-
-<p id="gdcalert2" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image2.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert3">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image2.png "image_tooltip")
-
-
+![reference-guided workflow](wf-ref-guided.png)
 
 ### Steps and outputs
 
 BWA MEM 2:
-
-
 
 * The reads are mapped to the reference genome; output in BAM format
 * The collection of bam files is named something like `Map with BWA-MEM on collection 5 (mapped reads in BAM format)`
@@ -350,59 +296,40 @@ BWA MEM 2:
 Samtools stats before filtering:
 
 
-
 * These bam files are sent to Samtools stats to get statistics; these are then sent to MultiQC to provide a nice output. This is tagged as "bam stats before filtering" in the Galaxy history. 
 * The "General Statistics" show how many reads were mapped - if there is a low mapping rate, it may be worth re-checking or repeating QC on the raw reads, or considering a different reference genome, or using a de novo approach.
 * To see if many reads have been soft-clipped by Bwa mem (which may affect how well gstacks can work), look at the "Alignment Metrics" section, and the row with "Mapped bases (Cigar)". Hover over the dots to see sample names especially towards the left of the row - these have the least mapped reads.
 
 Samtools view:
 
-
-
 * This step filters out certain reads from the bam files. The default settings are to exclude reads if they are unmapped, if the alignment is not primary or is supplementary, if the read fails platform/vendor quality checks, and if the read is a PCR or optical duplicate. 
 * The output bams are tagged with "filtered bams" in the Galaxy history.
 
 Samtools stats after filtering:
 
-
-
 * Filtered bams are sent again to samtools stats, and statistics to MultiQC, with the report tagged as "bam stats after filtering" in the Galaxy history. 
 
 gstacks:
 
-
-
 * Filtered bams and a population map are sent to gstacks. The outputs are:
 * Catalog of loci in fasta format
 * Variant calls in VCF format
-* For more detail see section 
+* For more detail see the "gstacks output" section 
 
-<p id="gdcalert3" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: undefined internal link (link text: "Gstacks output"). Did you generate a TOC? </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert4">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-[Gstacks output](#heading=h.1j5czzheg305)
 * Note: some bam files cause errors here with gstacks. For example, the log file may say "Error, all records discarded with file SampleXYZ.FASTQ.bam, Aborted".
 * If this occurs, check the bam stats (as described above). Some of the options are to re-do QC on the raw reads, change settings for mapping reads in BWA MEM, and/or delete this sample/s from the population map and proceed to gstacks. 
 * The sample can still remain in the list of bam files but gstacks will only consider what is listed in the pop map. 
-* To amend the population map see 
-
-<p id="gdcalert4" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: undefined internal link (link text: "Create or amend a population map"). Did you generate a TOC? </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert5">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-[Create or amend a population map](#heading=h.p7kvee1z5qyi)
+* To amend the population map see the section "Create or amend a population map"
 
 populations:
-
-
 
 * gstacks outputs and a population map are sent to the "populations" module. The outputs are:
 * Locus consensus sequences in fasta format
 * Snp calls, in VCF format
 * Haplotypes, in VCF format
 * Summary statistics
-* For more detail see section 
+* For more detail see the "populations outputs" section 
 
-<p id="gdcalert5" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: undefined internal link (link text: "Populations output"). Did you generate a TOC? </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert6">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-[Populations output](#heading=h.fvbg8hhhjgeb)
 
 
 ### Option: Run only bwa mem
@@ -416,7 +343,6 @@ populations:
 ### Option: Run only gstacks + populations
 
 
-
 * This workflow takes in bam files and a population map and produces output from gstacks and populations, as described above. 
 
 
@@ -424,32 +350,19 @@ populations:
 
 Note: this takes a lot longer than the reference-guided workflow. 
 
- 
-
-
 ### Inputs:
-
-
 
 * demultiplexed reads in fastq format, may be output from the QC workflow. Files are in a collection. 
 * population map in text format
 
 **Image of the workflow:**
 
-
-
-<p id="gdcalert6" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image3.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert7">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image3.png "image_tooltip")
-
+![denovo workflow](wf-denovo.png)
 
 
 ### Steps and outputs
 
 ustacks:
-
-
 
 * input reads go to ustacks. 
 * ustacks assembles the reads into matching stacks (hypothetical alleles). 
@@ -460,8 +373,6 @@ ustacks:
 * Please see **sections 6.1 to 6.4 **in [https://catchenlab.life.illinois.edu/stacks/manual/#ufiles](https://catchenlab.life.illinois.edu/stacks/manual/#ufiles) for a full description. 
 
 cstacks:
-
-
 
 * cstacks will merge stacks into a catalog of consensus loci. 
 * The outputs are in a collection called something like `Stacks2: cstacks  on data 3, data 71, and others Catalog of loci`. Click on this to see the three files, each in tsv format:
@@ -488,44 +399,29 @@ tsv2bam:
 
 gstacks:
 
-
-
 * Catalog of loci in fasta format
 * Variant calls in VCF format
-* For more detail see section 
+* For more detail see the "gstacks output" section
 
-<p id="gdcalert7" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: undefined internal link (link text: "Gstacks output"). Did you generate a TOC? </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert8">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-[Gstacks output](#heading=h.1j5czzheg305)
 
 populations:
-
-
 
 * Locus consensus sequences in fasta format
 * Snp calls, in VCF format
 * Haplotypes, in VCF format
 * Summary statistics
-* For more detail see section 
-
-<p id="gdcalert8" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: undefined internal link (link text: "Populations output"). Did you generate a TOC? </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert9">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-[Populations output](#heading=h.fvbg8hhhjgeb)
+* For more detail see the "populations output" section
 
 
 ### Option: run only ustacks
 
 You may want to run ustacks with different batches of samples. To be able to combine these later, there are some necessary steps - we need to keep track of how many samples have already run in ustacks, so that new samples can be labelled with different identifying numbers.  
 
-
-
 * In ustacks, under "Processing options" there is an option called "Start identifier at". 
 * The default for this is 1, which can be used for the first batch of samples. These will then be labelled as sample 1, sample 2 and so on. 
 * For any new batches of samples to process in ustacks, we will want to start numbering these at the next available number. e.g. if there were 10 samples in batch 1, this should then be set to start at 11. 
 
 To combine multiple outputs from ustacks, providing these have been given appropriate starting identifiers:
-
-
 
 * Find the ustacks output in the Galaxy history. This will be a list of samples. 
 * Click on the cross button next to the filename to delete, but select "Collection only". This releases the items from the list, but they will now be hidden in the Galaxy history.
@@ -537,8 +433,6 @@ To combine multiple outputs from ustacks, providing these have been given approp
 
 ### Option: run only cstacks onwards
 
-
-
 * This workflow takes in ustacks output, and runs cstacks, sstacks, gstacks, and populations. 
 
 
@@ -549,25 +443,18 @@ To combine multiple outputs from ustacks, providing these have been given approp
 
 After getting BAM files, gstacks runs to create two files in collection called something like `Stacks2: gstacks  on data 3, data 39, and others Assembled contigs and variant sites`. Click on this to see the files:
 
-
-
 * Consensus sequences of each loci, formed by assembling all the reads from each locus. `catalog.fa.gz`
 * Variant calls for each locus. `catalog.calls.vcf` Reads from each sample have been aligned back to the consensu loci sequences. Each line in this VCF file is a single position, with or without a snp. Scroll to the right to see which samples contain reads that support this information. 
 * Please see **sections 6.5 gstacks** [https://catchenlab.life.illinois.edu/stacks/manual/#gfiles](https://catchenlab.life.illinois.edu/stacks/manual/#gfiles) for a full description. 
-
 
 ### Populations output
 
 consensus sequences of each locus
 
-
-
 * Please see **section 6.6.7 RAD loci FASTA output **in [https://catchenlab.life.illinois.edu/stacks/manual/#pop_fasta](https://catchenlab.life.illinois.edu/stacks/manual/#pop_fasta) for a full description. 
 * e.g. Per-locus consensus sequence: `Stacks2: populations on data 3, data 43, and data 42 per-locus consensus sequences`
 
 variant calls for each locus 
-
-
 
 * Please see **section 7.2.1 populations.snps.vcf - Default **in [https://catchenlab.life.illinois.edu/stacks/manual/#coords](https://catchenlab.life.illinois.edu/stacks/manual/#coords) for a full description. 
 *  Each row is a snp call. The information per sample is over to the right. 
@@ -575,16 +462,12 @@ variant calls for each locus
 
 haplotypes in VCF format
 
-
-    Please see **section 7.3 RAD haplotypes **in [https://catchenlab.life.illinois.edu/stacks/manual/#coords](https://catchenlab.life.illinois.edu/stacks/manual/#coords) for a full description. 
-
-
+Please see **section 7.3 RAD haplotypes **in [https://catchenlab.life.illinois.edu/stacks/manual/#coords](https://catchenlab.life.illinois.edu/stacks/manual/#coords) for a full description. 
 
 * These are the haplotypes per locus, phased into groups of snps. 
 * e.g.` Stacks2: populations on data 3, data 43, and data 42 Haplotypes in VCF format`
 
 summary statistics for the populations
-
 
 
 * Many summary statistics are produced, and the outputs files are named clearly. 
@@ -595,18 +478,15 @@ summary statistics for the populations
 ### Troubleshooting and converting outputs
 
 
-
 * Columns in output files may not correspond exactly to those described in the Stacks manual [http://catchenlab.life.illinois.edu/stacks/manual/#files](http://catchenlab.life.illinois.edu/stacks/manual/#files). There is some description in the tool interface (see below the tool parameters) for what the output format is, particularly for the populations module. Please contact the Galaxy team if something is unclear. 
 * In older versions of Stacks, a summary.html is available but may not display. Download and open to view. 
 
 Convert to Migrate format
 
 
-
 * This is not available as an option in the current version of Stacks in Galaxy, but there is a script to convert if needed:  (not tested) [https://github.com/paulmaier/fasta2genotype](https://github.com/paulmaier/fasta2genotype), discussed here [https://groups.google.com/g/migrate-support/c/zWonJshYM_4?pli=1](https://groups.google.com/g/migrate-support/c/zWonJshYM_4?pli=1)
 
 Convert the VCF output and use the R vcfR package
-
 
 
 * R script, see Additional file 2 in Wright, B., Farquharson, K.A., McLennan, E.A. et al. From reference genomes to population genomics: comparing three reference-aligned reduced-representation sequencing pipelines in two wildlife species. BMC Genomics 20, 453 (2019). [https://doi.org/10.1186/s12864-019-5806-y](https://doi.org/10.1186/s12864-019-5806-y)
@@ -616,13 +496,9 @@ Convert the VCF output and use the R vcfR package
 
 **Where should I start?**
 
-
-
 * Read the Introduction section here and try out the Galaxy RADseq tutorials. You can then use this test data to try some Stacks modules, including varying the parameters. Ensure you have read the Stacks manual to fully understand the inputs and outputs of each tool. 
 
 **Will my data work with these workflows?**
-
-
 
 * These workflows are a broad template provided to work with RADseq data. They may work straight away with your own real data sets, or they may need some modification. Information is provided about how to copy and then modify workflows as needed. In particular your own data may need specific QC before running these workflows. If possible make a small subset of your real data sets to try out the various modules in stacks, and then to try out the workflows. This will identify issues more quickly. 
 
@@ -634,13 +510,9 @@ Convert the VCF output and use the R vcfR package
 
 **I don't know if my raw reads have been demultiplexed or if adapters have been trimmed?**
 
-
-
 * If unsure, ask your sequencing provider. 
 
 **How much QC is recommended for the raw reads?**
-
-
 
 * It is hard to say. This will come down to your own time and priorities, and what others in the field are doing. Some data will need no or little QC. It is advisable to first get some information about the qualities and characteristics of the reads before making further decisions about QC, e.g. with a tool such as FastQC. 
 
@@ -692,13 +564,13 @@ Convert the VCF output and use the R vcfR package
 
 * Yes. Import the workflow, and edit it to add in additional tools. 
 
-**What if I break Galaxy? **
+**What if I break Galaxy?**
 
 
 
 * This is unlikely. If you have particularly large jobs (e.g. > 1000 samples), contact the Galaxy Australia team before running workflows, to check there will be enough room. You can also request additional storage. 
 
-**What if I lose my data? **
+**What if I lose my data?**
 
 
 
