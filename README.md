@@ -52,6 +52,11 @@ Please note that:
 * Complete the registration wizard and click `Create`.
 * Login to your account.
 
+<p align="center">
+    <img src="galaxy-register.png" alt="register" width="400"/>
+</p>
+
+
 ### Get data: Import sequence reads in fastq format. 
 
 * To import BPA data, see [https://australianbiocommons.github.io/how-to-guides/galaxy_australia/upload_data](https://australianbiocommons.github.io/how-to-guides/galaxy_australia/upload_data)
