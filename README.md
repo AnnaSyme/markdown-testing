@@ -1,3 +1,8 @@
+---
+title: Stacks workflows in [Galaxy Australia](https://usegalaxy.org.au/) using RADseq
+contributors: [Anna Syme, Johan Gustafsson, Tom Harrop, Mike Thang]
+---
+
 ## **Stacks workflows in [Galaxy Australia](https://usegalaxy.org.au/) using RADseq**
 
 ## Introduction & context
